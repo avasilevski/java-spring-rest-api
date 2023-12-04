@@ -14,11 +14,11 @@ public class Task {
         // default constructor
     }
 
-    public Task(Long id, String title, String description, LocalDateTime dueDate, boolean completed){
+    public Task(Long id, String title, String description, boolean completed){
         this.id = id;
         this.title = title;
         this.description = description;
-        this.dueDate = dueDate;
+        this.dueDate = LocalDateTime.now();
         this.completed = completed;
     }
 
