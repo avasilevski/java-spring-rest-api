@@ -26,4 +26,8 @@ public class TaskService {
         // TODO: Handle this in case of not found, null
         return optionalTask.orElse(null);
     }
+
+    public Task save(Task task){
+        return taskRepository.save(task);
+    }
 }
