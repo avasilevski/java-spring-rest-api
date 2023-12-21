@@ -1,12 +1,12 @@
 package com.aleksandarvasilevski.javaspringrestapi.services;
 
+import com.aleksandarvasilevski.javaspringrestapi.exceptions.TaskException;
 import com.aleksandarvasilevski.javaspringrestapi.models.Task;
 import com.aleksandarvasilevski.javaspringrestapi.repositories.TaskRepository;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import java.util.List;
-import java.util.Arrays;
-import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -24,7 +24,9 @@ public class TaskService {
     public Task getTaskById(long id){
         Optional<Task> optionalTask = taskRepository.findById(id);
         // TODO: Handle this in case of not found, null
-        return optionalTask.orElse(null);
+
+        // If the task is not found, throw an exception or handle it differently
+        return optionalTask.orElseThrow(() -> new TaskException("Task not found with ID: " + id));
     }
 
     public Task save(Task task){

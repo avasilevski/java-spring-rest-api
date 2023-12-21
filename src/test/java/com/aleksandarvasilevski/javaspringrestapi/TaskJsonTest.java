@@ -18,7 +18,7 @@ class TaskJsonTest {
 
     @Test
     void taskSerializationTest() throws IOException {
-        Task task = new Task(1L, "Foo", "Foo something...", false);
+        Task task = new Task(1L, "Foo", "Foo something...");
         assertThat(json.write(task)).isStrictlyEqualToJson("expected.json");
         assertThat(json.write(task)).hasJsonPathNumberValue("@.id");
         assertThat(json.write(task)).extractingJsonPathNumberValue("@.id")
@@ -44,7 +44,7 @@ class TaskJsonTest {
               "completed": false
            }
            """;
-        assertThat(json.parse(expected)).isEqualToComparingFieldByField(new Task(1L, "Foo", "Foo something...", false));
+        assertThat(json.parse(expected)).isEqualToComparingFieldByField(new Task(1L, "Foo", "Foo something..."));
         assertThat(json.parseObject(expected).getId()).isEqualTo(1);
         assertThat(json.parseObject(expected).getTitle()).isEqualTo("Foo");
         assertThat(json.parseObject(expected).getDescription()).isEqualTo("Foo something...");

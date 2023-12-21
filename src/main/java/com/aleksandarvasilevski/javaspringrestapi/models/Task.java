@@ -21,11 +21,11 @@ public class Task {
         // default constructor
     }
 
-    public Task(long id, String title, String description, boolean completed){
+    public Task(long id, String title, String description){
         this.id = id;
         this.title = title;
         this.description = description;
-        this.completed = completed;
+        this.completed = false;
     }
 
     public Long getId(){
